@@ -1,0 +1,41 @@
+version: "3.7"
+
+services:
+  salon-api:
+    container_name: salon-api
+    build:
+      context: ./
+    depends_on:
+      - postgresql
+    ports:
+      - "3001:3001"
+    environment:
+      spring.flyway.url: jdbc:postgresql://postgresql:5433/salon
+      spring.flyway.user: salon
+      spring.flyway.password: salon
+      spring.datasource.url: jdbc:postgresql://postgresql:5433/salon
+      spring.datasource.username: salon
+      spring.datasource.password: salon
+      spring.datasource.driverClassName: org.postgresql.Driver
+      server.port: 3001
+    networks:
+      - salon
+
+  postgresql:
+    image: library/postgres:13
+    ports:
+      - 5433:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+      - ./docker/db:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: salon
+      POSTGRES_PASSWORD: salon
+    networks:
+      - salon
+
+volumes:
+  postgresql_data:
+
+networks:
+  salon:

@@ -1,0 +1,40 @@
+server:
+  servlet:
+    contextPath: /salon
+  port: 3001
+
+spring:
+  jpa:
+    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        temp.use_jdbc_metadata_defaults: false
+        jdbc:
+          time_zone: "UTC"
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    open-in-view: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/salon
+    username: salon
+    password: salon
+    driverClassName: org.postgresql.Driver
+
+  jackson.serialization.INDENT_OUTPUT: true
+
+  flyway:
+    baseline-version: 0
+    url: jdbc:postgresql://localhost:5433/salon
+    user: salon
+    password: salon
+    enabled: false
+    check-location: false
+
+organization:
+  name: AR Salon and Day Spa Services
+  address: 1234 Main Street
+  city: Anytown
+  state: ND
+  zipcode: 58201
+  phone: 555-123-4567
