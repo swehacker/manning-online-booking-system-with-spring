@@ -14,22 +14,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SalonDetails {
 
-  @Value("${salon.name}")
+  @Value("${organization.name}")
   private String name;
 
-  @Value("${salon.address}")
+  @Value("${organization.address}")
   private String address;
 
-  @Value("${salon.city}")
+  @Value("${organization.city}")
   private String city;
 
-  @Value("${salon.state}")
+  @Value("${organization.state}")
   private String state;
 
-  @Value("${salon.zipcode}")
+  @Value("${organization.zipcode}")
   private String zipcode;
 
-  @Value("${salon.phone}")
+  @Value("${organization.phone}")
   private String phone;
 
   public SalonDetails clone() throws CloneNotSupportedException {
